@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumen Lanskap</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Warna latar belakang hitam */
+            color: #fff; /* Warna teks putih */
+        }
+        .page {
+            width: 297mm;
+            height: 210mm;
+            display: block;
+            margin: 20mm auto;
+            padding: 20mm;
+            box-sizing: border-box;
+            page-break-after: always;
+            background: #333; /* Warna latar belakang abu-abu gelap untuk setiap halaman */
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        .page:last-child {
+            page-break-after: auto;
+        }
+        .page-number {
+            position: absolute;
+            bottom: 20mm;
+            right: 20mm;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Memanfaatkan Multimedia dalam HTML</h1>
+        <p>Nama Kelompok 7:</p>
+        <ul>
+            <li>Safira</li>
+            <li>Adelia</li>
+            <li>Salma</li>
+            <li>Refal</li>
+        </ul>
+        <div class="page-number">Halaman 1</div>
+    </div>
+
+    <div class="page">
+        <h2>Pengertian Image Di HTML</h2>
+        <p>Dalam HTML, elemen <code>&lt;img&gt;</code> digunakan untuk menyisipkan gambar ke dalam halaman web. Elemen ini adalah elemen kosong (self-closing) yang tidak memerlukan tag penutup. Elemen <code>&lt;img&gt;</code> memiliki beberapa atribut penting, antara lain:</p>
+        <ul>
+            <li>src: Atribut ini mendefinisikan URL dari gambar yang akan ditampilkan. Ini adalah atribut yang wajib ada.</li>
+            <li>alt: Atribut ini menyediakan teks alternatif yang akan ditampilkan jika gambar tidak dapat di-load. Ini penting untuk aksesibilitas dan SEO.</li>
+            <li>width dan height: Atribut ini menetapkan lebar dan tinggi gambar dalam piksel.</li>
+            <li>title: Atribut ini menyediakan informasi tambahan tentang gambar yang biasanya muncul sebagai tooltip saat kursor berada di atas gambar.</li>
+        </ul>
+        <div id="imageContainer">
+            <img id="myImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHZLMY_VBzwm9Fm0KOd8p79ehxJv42dW910sKAvxFoKBquEH7PyZoCEnWs&s=10.jpg" alt="HTML" width="415" height="400"> 
+            <br>
+            <!-- Kontrol Ukuran Gambar -->
+            <button onclick="resizeImage('small')">Kecilkan</button>
+            <button onclick="resizeImage('original')">Ukuran Asli</button>
+            <button onclick="resizeImage('large')">Besarkan</button>
+        </div>
+
+        <script>
+            function resizeImage(size) {
+                var image = document.getElementById('myImage');
+                if (size === 'small') {
+                    image.style.width = '200px';
+                    image.style.height = 'auto';
+                } else if (size === 'original') {
+                    image.style.width = '415px';
+                    image.style.height = '400px';
+                } else if (size === 'large') {
+                    image.style.width = '600px';
+                    image.style.height = 'auto';
+                }
+            }
+        </script>
+        <div class="page-number">Halaman 2</div>
+    </div>
+
+    <div class="page">
+        <h1>Pengertian Video Di HTML</h1>
+        <p>Di HTML, elemen <code>&lt;video&gt;</code> digunakan untuk menyisipkan video ke dalam halaman web. Elemen ini memungkinkan pemutaran video secara langsung di browser tanpa memerlukan plug-in eksternal. Elemen <code>&lt;video&gt;</code> memiliki beberapa atribut penting, antara lain:</p>
+        <ul>
+            <li>src: Atribut ini mendefinisikan URL dari video yang akan ditampilkan. Ini adalah atribut yang wajib diisi.</li>
+            <li>controls: Atribut ini menampilkan kontrol video seperti play, pause, dan volume.</li>
+            <li>autoplay: Atribut ini memutar video secara otomatis saat halaman dimuat.</li>
+            <li>loop: Atribut ini memutar video secara berulang-ulang.</li>
+            <li>muted: Atribut ini mematikan suara video secara default.</li>
+        </ul>
+
+        <h3>Video</h3>
+        <iframe id="videoFrame" src="https://www.youtube.com/embed/z3OfmuNMIDI" frameborder="0" allowfullscreen></iframe>
+        <br>
+        <!-- Kontrol Ukuran Video -->
+        <button onclick="resizeVideo('small')">Kecilkan</button>
+        <button onclick="resizeVideo('original')">Ukuran Asli</button>
+        <button onclick="resizeVideo('large')">Besarkan</button>
+        <button onclick="toggleFullscreen()">Layar Penuh</button>
+
+        <script>
+            function resizeVideo(size) {
+                var iframe = document.getElementById('videoFrame');
+                if (size === 'small') {
+                    iframe.style.width = '200px';
+                    iframe.style.height = 'auto';
+                } else if (size === 'original') {
+                    iframe.style.width = '560px';
+                    iframe.style.height = '315px';
+                } else if (size === 'large') {
+                    iframe.style.width = '800px';
+                    iframe.style.height = '450px';
+                }
+            }
+
+            function toggleFullscreen() {
+                var iframe = document.getElementById('videoFrame');
+                if (iframe.requestFullscreen) {
+                    iframe.requestFullscreen();
+                } else if (iframe.mozRequestFullScreen) { // Firefox
+                    iframe.mozRequestFullScreen();
+                } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    iframe.webkitRequestFullscreen();
+                } else if (iframe.msRequestFullscreen) { // IE/Edge
+                    iframe.msRequestFullscreen();
+                }
+            }
+        </script>
+
+        <h3>Canvas</h3>
+        <p>Penjelasan canvas: Mendefinisikan area gambar yang akan digambar. <code>getContext('2d')</code>: Mendapatkan konteks 2D yang memungkinkan kita menggambar di canvas. <code>fillRect(x, y, width, height)</code>: Menggambar kotak berwarna. <code>strokeRect(x, y, width, height)</code>: Menggambar kotak tanpa mengisi warna. <code>arc(x, y, radius, startAngle, endAngle)</code>: Menggambar lingkaran.</p>
+        <canvas id="myCanvas" width="200" height="100"> 
+            Browser Anda tidak mendukung tag canvas. 
+        </canvas> 
+        <script>
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            context.fillStyle = "#FF0000";
+            context.fillRect(0, 0, 150, 75);
+        </script>
+        <div class="page-number">Halaman 3</div>
+    </div>
+
+    <div class="page">
+        <h1>Pengertian Embedding YouTube Di Html</h1>
+        <p>Embedding YouTube adalah proses menyisipkan video YouTube ke dalam halaman web atau blog. Ini dilakukan dengan menggunakan kode HTML yang disediakan oleh YouTube, memungkinkan video untuk diputar langsung di situs tersebut tanpa perlu meninggalkan halaman web.</p>
+        <p>Berikut langkah-langkah untuk embedding video YouTube:</p>
+        <ul>
+            <li>Cari Video: Temukan video yang ingin kamu embed di YouTube.</li>
+            <li>Dapatkan Kode Embed: Klik tombol "Share" (Bagikan) di bawah video, lalu pilih opsi "Embed" (Sisipkan).</li>
+            <li>Salin Kode HTML: Salin kode HTML yang ditampilkan di pop-up.</li>
+            <li>Tempel Kode di Halaman Web: Tempel kode tersebut di tempat yang diinginkan di halaman web atau blog kamu.</li>
+        </ul>
+        <div class="page-number">Halaman 4</div>
+    </div>
+    <div class="page">
+    <h2>Embedding YouTube dengan Kontrol Skala</h2>
+    <div id="videoContainer">
+        <div id="iframeWrapper">
+            <iframe id="myIframe" src="https://www.youtube.com/embed/M_ov3-HF-XM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="controls">
+            <!-- Kontrol Skala Iframe -->
+            <button onclick="zoomIframe('out')">Kecilkan</button>
+            <button onclick="zoomIframe('reset')">Ukuran Asli</button>
+        </div>
+
+        <script>
+            let scale = 1;
+
+            function zoomIframe(action) {
+                var iframe = document.getElementById('myIframe');
+                if (action === 'out') {
+                    scale -= 0.1;
+                } else if (action === 'reset') {
+                    scale = 1;
+                }
+                iframe.style.transform = `scale(${scale})`;
+            }
+        </script>
+    </div>
+
+        
+        <div class="page-number">Halaman 5</div>
+    </div>
+
+    <div class="page">
+        <h2>Pengertian Audio Di HTML</h2>
+        <p>Di HTML, elemen <code>&lt;audio&gt;</code> digunakan untuk menyisipkan audio ke dalam halaman web. Elemen ini memungkinkan pemutaran audio secara langsung di browser tanpa memerlukan plug-in eksternal. Elemen <code>&lt;audio&gt;</code> memiliki beberapa atribut penting, antara lain:</p>
+        <ul>
+            <li>src: Atribut ini mendefinisikan URL dari audio yang akan ditampilkan. Ini adalah atribut yang wajib diisi.</li>
+            <li>controls: Atribut ini menampilkan kontrol audio seperti play, pause, dan volume.</li>
+            <li>autoplay: Atribut ini memutar audio secara otomatis saat halaman dimuat.</li>
+            <li>loop: Atribut ini memutar audio secara berulang-ulang.</li>
+            <li>muted: Atribut ini mematikan suara audio secara default.</li>
+        </ul>
+<div id="spotifyEmbed">
+    <iframe src="https://open.spotify.com/embed/track/0cXXuhy5D6A13IMcnN3bSm" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
+<br>
+<!-- Kontrol Ukuran Audio -->
+<button onclick="resizeAudio('small')">Kecilkan</button>
+<button onclick="resizeAudio('original')">Ukuran Asli</button>
+<button onclick="resizeAudio('large')">Besarkan</button>
+
+<script>
+    function resizeAudio(size) {
+        var iframe = document.getElementById('spotifyEmbed').querySelector('iframe');
+        if (size === 'small') {
+            iframe.style.width = '200px';
+            iframe.style.height = '80px';
+        } else if (size === 'original') {
+            iframe.style.width = '300px';
+            iframe.style.height = '80px';
+        } else if (size === 'large') {
+            iframe.style.width = '450px';
+            iframe.style.height = '80px';
+        }
+    }
+</script>
+        <div class="page-number">Halaman 6</div>
+    </div>
+
+    <div class="page">
+        <h1>Embedding Spotify</h1>
+        <p>Embed Spotify dalam bahasa Indonesia mengacu pada menanamkan atau memasukkan widget pemutar musik Spotify ke dalam situs web atau aplikasi. Dengan embed Spotify, pengguna dapat memutar lagu, album, atau playlist langsung dari situs web atau aplikasi tersebut tanpa harus membuka aplikasi Spotify secara terpisah.</p>
+        <p>1. Buka Spotify: Temukan lagu, album, atau playlist yang ingin Anda tanamkan.</p>
+                <p>2. Klik Tiga Titik: Di samping judul lagu, album, atau playlist, klik ikon tiga titik.</p>
+                        <p>3. Buka Spotify: Temukan lagu, album, atau playlist yang ingin Anda tanamkan.</p>
+                                <p>4. Pilih "Salin Kode Embed": Di sini, Anda akan mendapatkan kode HTML untuk menanamkan pemutar Spotify.</p>
+                                        <p>5. Tempel Kode di Situs Web: Masukkan kode embed ini ke dalam kode HTML situs web atau aplikasi Anda.</p>
+                                                <p> <b>CONTOH EMBED  DARI SPOTIFY</b> :</p>
+        <iframe src="https://open.spotify.com/embed/playlist/2iGXPyzNKkYOPyf2Y4gk3f" width="300" height="360" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <div class="page-number">Halaman 7</div>
+    </div>
+</body>
+</html>
